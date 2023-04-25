@@ -1,0 +1,255 @@
+---
+title: "Regression: predictive modelling"
+subtitle: "ENVX2001 - Applied Statistical Methods"
+date: today
+date-format: "MMM YYYY"
+author: 
+  - name: Januar Harianto
+    affiliation: School of Life and Envoronmental Sciences
+institute: The University of Sydney
+format:
+  revealjs: 
+    theme: [default, theme.scss]
+    slide-number: c/t
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    highlight-style: arrow
+    embed-resources: false
+execute: 
+  eval: true
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  cache = TRUE)
+library(tidyverse)
+ggplot2::theme_set(cowplot::theme_half_open())
+# ggplot2::theme_set(ggplot2::theme_minimal())
+```
+
+
+
+
+# Predictive modelling
+
+> "The best way to predict the future is to create it."
+
+-- Peter Ferdinand Drucker, 1909--2005
+
+
+# Our workflow so far
+
+## Workflow {auto-animate="true"}
+
+1. Model development -- week 7
+   - **Explore**: visualise, summarise
+   - **Transform predictors**: linearise, reduce skewness/leverage
+   - **Model**: fit, check assumptions, interpret, transform. Repeat.
+
+. . .
+
+2. Variable selection -- week 8
+   - **VIF**: remove predictors with high variance inflation factor
+   - **Model selection**: stepwise selection, AIC, principle of parsimony, assumption checks
+
+. . .
+
+3. This week -- predictive modelling
+   - **Predict**: Use the model to predict new data
+   - **Assess**: Evaluate the model's performance
+   - **Reflect**: What can we do to improve the model?
+  
+
+## Workflow {auto-animate="true"}
+
+1. Model development -- week 7
+   - **Explore**: visualise, summarise
+   - [**Partition data (maybe): training and test sets**]{style="color: red;"}
+   - **Transform predictors**: linearise, reduce skewness/leverage
+   - **Model**: fit, check assumptions, interpret, transform. Repeat.
+
+2. Variable selection -- week 8
+   - **VIF**: remove predictors with high variance inflation factor
+   - **Model selection**: stepwise selection, AIC, principle of parsimony, assumption checks
+
+3. This week -- predictive modelling
+   - **Predict**: Use the model to predict new data
+   - [**Assess: Evaluate the model's performance**]{style="color: red;"}
+   - **Reflect**: What can we do to improve the model?
+
+# Making predictions
+
+## Previously on ENVX2001... {auto-animate="true"}
+
+
+We fitted a multiple linear regression model to the data (slide 62).
+
+```{r}
+#| message=FALSE, warning=FALSE
+library(tidyverse)
+multi_fit <- lm(log(Ozone) ~ Temp + Solar.R + Wind, data = airquality)
+summary(multi_fit)
+```
+
+$$\widehat{log(Ozone)}=-0.262 + 0.0492 \cdot Temp + 0.00252 \cdot Solar.R - 0.0616 \cdot Wind$$
+
+## Predict: equation {auto-animate="true"}
+
+$$ \widehat{log(Ozone)}=-0.262 + 0.0492 \cdot \color{darkorchid}{Temp} + 0.00252 \cdot \color{darkorange}{Solar.R} - 0.0616 \cdot \color{seagreen}{Wind} $$
+
+. . .
+
+On a certain day, we measured (*units are Imperial*):
+
+- [temperature `Temp` to be 80 degrees Fahrenheit]{style="color: darkorchid"}
+- [solar radiation `Solar.R` to be 145 units (Langleys)]{style="color: darkorange"}
+- [wind speed `Wind` to be 10.9 miles per hour]{style="color: seagreen"}
+  
+**What is the predicted ozone level?**
+. . .
+
+$$\widehat{log(Ozone)}=-0.262 + 0.0492 \cdot \color{darkorchid}{80} + 0.00252 \cdot \color{darkorange}{145} - 0.0616 \cdot \color{seagreen}{10.9}$$
+
+Easy! The two things we need to think about are...
+
+- **What is the uncertainty in this prediction?**
+
+
+## Uncertainty
+
+. . .
+
+- **Confidence interval**: uncertainty in the **mean** response at a given predictor value.
+- **Prediction interval**: uncertainty in a **single** response at a given predictor value.
+
+<br>
+
+. . .
+
+### What it means
+
+> **95% confidence interval**: Given the parameters of the model, we are 95% confident that the *mean* response at a given predictor value is between $y_1$ and $y_2$.
+
+> **95% prediction interval**: Given the parameters of the model, we are 95% confident that a *single* response at a given predictor value is between $y_1$ and $y_2$.
+
+
+### Why the distinction?
+
+- **Confidence interval**: we are interested in the *mean* response.
+- **Prediction interval**: we are interested in a *single* value prediction.
+
+## Confidence interval (CI)
+
+### CI: standard error of the fit
+
+$$ se(\widehat{y}) = \sqrt{MSE \cdot \left( \frac{1}{n} + \frac{(x_0 - \bar{x})^2}{\sum_{i=1}^n (x_i - \bar{x})^2} \right)} $$ where $x_0$ is the predictor value at which we want to predict the response
+
+- $MSE$ is the mean squared error of the fit (residual ms)
+- $\sum_{i=1}^n (x_i - \bar{x})^2$ is the sum of squares of the predictor values
+- $n$ is the number of observations
+- $\bar{x}$ is the mean of the predictor values
+
+## Prediction interval (PI)
+
+### PI: standard error of the prediction
+
+$$ se(\widehat{y}) = \sqrt{MSE \cdot \left( 1 + \frac{1}{n} + \frac{(x_0 - \bar{x})^2}{\sum_{i=1}^n (x_i - \bar{x})^2} \right)} $$ where $x_0$ is the predictor value at which we want to predict the response
+
+- $MSE$ is the mean squared error of the fit (residual ms)
+- $\sum_{i=1}^n (x_i - \bar{x})^2$ is the sum of squares of the predictor values
+- $n$ is the number of observations
+- $\bar{x}$ is the mean of the predictor values
+
+
+:::{.callout-note .fragment .fade-up}
+The only difference between the CI and PI is the additional term $1$ in the PI formula that is added. The reason for this is that we are interested in a *single* response, not the *mean* response.
+:::
+
+## Predictions in R
+
+- We can use the `predict()` function
+- First, we need to create a new data frame with the predictor values we want to predict at
+
+```{r}
+#| message=FALSE, warning=FALSE
+to_predict <- data.frame(Temp = 80, Solar.R = 145, Wind = 10.9)
+```
+
+- Then, we can use the `predict()` function to predict the response at these values
+- Use `interval = "confidence"` or `interval = "prediction"` to get the confidence or prediction interval.
+
+
+```{r}
+#| message=FALSE, warning=FALSE
+predict(multi_fit, newdata = to_predict, interval = "confidence")
+predict(multi_fit, newdata = to_predict, interval = "prediction")
+```
+
+## Comparing CI vs PI
+
+- The confidence interval is narrower than the prediction interval.
+- It's easier to visualise two-dimensional data, so let's look at a simple linear regression model of `log(Ozone)` vs. `Temp`.
+
+```{r}
+fit <- lm(log(Ozone) ~ Temp, data = airquality)
+```
+
+- We create a range of predictions across all possible `Temp` values in 0.1 &deg;F increments, and calculate both the CI and PI for each of those values
+
+```{r}
+# Generate values to predict at in 0.1 degree increments
+to_pred <- data.frame(Temp = seq(min(airquality$Temp), max(airquality$Temp), by = 0.1))
+preds_ci <- predict(fit, newdata = to_pred, interval = "confidence") # confidence interval
+preds_pi <- predict(fit, newdata = to_pred, interval = "prediction") # prediction interval
+```
+
+- Extract only upper and lower CI and PI values and merge the data frames
+
+```{r}
+pred_df <- data.frame(Temp = to_pred$Temp,
+                      Lci = preds_ci[, "lwr"],
+                      Uci = preds_ci[, "upr"],
+                      Lpi = preds_pi[, "lwr"],
+                      Upi = preds_pi[, "upr"])
+```
+
+## Visualising CI vs PI
+
+- We can now plot the CI and PI as shaded areas around the predicted line
+
+```{r}
+#| code-fold: true
+p <-
+  ggplot(airquality, aes(Temp, log(Ozone))) +
+  geom_point() + 
+  geom_line(data = pred_df, aes(Temp, Lci), color = "blue") +
+  geom_line(data = pred_df, aes(Temp, Uci), color = "blue") +
+  geom_line(data = pred_df, aes(Temp, Lpi), color = "red") +
+  geom_line(data = pred_df, aes(Temp, Upi), color = "red") +
+  labs(x = "Temperature (F)", y = "log(Ozone)") +
+  theme_bw()
+p
+```
+
+## CI and `geom_smooth()`
+
+- Notice that `geom_smooth()` uses the CI, not the PI.
+
+```{r}
+#| code-fold: true
+p + geom_smooth(method = "lm", se = TRUE)
+```
+
+
+
+# Thanks!
+
+**Questions? Comments?**
+
+Slides made with [Quarto](https://quarto.org)
