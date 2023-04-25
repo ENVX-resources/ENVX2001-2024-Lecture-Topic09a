@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.333">
 
   <meta name="author" content="Januar Harianto">
-  <title>Regression: predictive modelling</title>
+  <title>Regression: predictive modelling – Part 1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -406,7 +406,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Regression: predictive modelling</h1>
+  <h1 class="title">Regression: predictive modelling – Part 1</h1>
   <p class="subtitle">ENVX2001 - Applied Statistical Methods</p>
 
 <div class="quarto-title-authors">
@@ -441,7 +441,7 @@ Januar Harianto
 <section id="workflow" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Workflow</h2>
 <ol type="1">
-<li>Model development – week 7
+<li>Model development
 <ul>
 <li><strong>Explore</strong>: visualise, summarise</li>
 <li><strong>Transform predictors</strong>: linearise, reduce skewness/leverage</li>
@@ -450,7 +450,7 @@ Januar Harianto
 </ol>
 <div class="fragment">
 <ol start="2" type="1">
-<li>Variable selection – week 8
+<li>Variable selection
 <ul>
 <li><strong>VIF</strong>: remove predictors with high variance inflation factor</li>
 <li><strong>Model selection</strong>: stepwise selection, AIC, principle of parsimony, assumption checks</li>
@@ -459,11 +459,10 @@ Januar Harianto
 </div>
 <div class="fragment">
 <ol start="3" type="1">
-<li><strong>This week – predictive modelling</strong>
+<li><strong>Predictive modelling</strong>
 <ul>
 <li><strong>Predict</strong>: Use the model to predict new data</li>
-<li><strong>Assess</strong>: Evaluate the model’s performance</li>
-<li><strong>Reflect</strong>: What can we do to improve the model?</li>
+<li><strong>Validate</strong>: Evaluate the model’s performance</li>
 </ul></li>
 </ol>
 </div>
@@ -1185,11 +1184,9 @@ F-statistic: 70.62 on 3 and 107 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <img data-src="index_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"><p>All of the above have a Pearson correlation coefficient of 1.</p>
 </section></section>
-<section id="putting-into-practice" class="title-slide slide level1 center">
-<h1>Putting into practice</h1>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-11_f77ca6a064b67878bbf95e12e349434e">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="next-lecture" class="title-slide slide level1 center">
+<h1>Next Lecture</h1>
+<p>We will go through several examples to practice data splitting, cross-validation, and model evaluation.</p>
 </section>
 
 <section id="thanks" class="title-slide slide level1 center">

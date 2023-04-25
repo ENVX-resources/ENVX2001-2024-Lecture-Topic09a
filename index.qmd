@@ -1,5 +1,5 @@
 ---
-title: "Regression: predictive modelling"
+title: "Regression: predictive modelling -- Part 1"
 subtitle: "ENVX2001 - Applied Statistical Methods"
 date: today
 date-format: "MMM YYYY"
@@ -50,24 +50,22 @@ ggplot2::theme_set(cowplot::theme_half_open())
 
 ## Workflow {auto-animate="true"}
 
-1. Model development -- week 7
+1. Model development
    - **Explore**: visualise, summarise
    - **Transform predictors**: linearise, reduce skewness/leverage
    - **Model**: fit, check assumptions, interpret, transform. Repeat.
 
 . . .
 
-2. Variable selection -- week 8
+2. Variable selection
    - **VIF**: remove predictors with high variance inflation factor
    - **Model selection**: stepwise selection, AIC, principle of parsimony, assumption checks
 
 . . .
 
-3. **This week -- predictive modelling**
+3. **Predictive modelling**
    - **Predict**: Use the model to predict new data
-   - **Assess**: Evaluate the model's performance
-   - **Reflect**: What can we do to improve the model?
-
+   - **Validate**: Evaluate the model's performance
 
 # Making predictions
 
@@ -725,11 +723,9 @@ ggplot(df_long, aes(x, y)) +
 
 All of the above have a Pearson correlation coefficient of 1.
 
-# Putting into practice
+# Next Lecture
 
-```{r}
-library(caret)
-```
+We will go through several examples to practice data splitting, cross-validation, and model evaluation.
 
 
 # Thanks!
