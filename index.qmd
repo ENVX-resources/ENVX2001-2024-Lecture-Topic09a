@@ -16,7 +16,7 @@ format:
     code-overflow: wrap
     highlight-style: arrow
     html-math-method: katex
-    embed-resources: false # set to true once complete
+    embed-resources: true # set to true once complete
 execute: 
   eval: true
   echo: true
