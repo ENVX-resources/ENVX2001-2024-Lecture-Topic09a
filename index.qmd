@@ -103,6 +103,7 @@ $$\widehat{log(Ozone)}=-0.262 + 0.0492 \cdot \color{darkorchid}{80} + 0.00252 \c
 Easy! The two things we need to think about are...
 
 - **What is the uncertainty in this prediction?**
+- **Can this model be used to predict ozone if we collect new data in the future?**
 
 
 ## Uncertainty
