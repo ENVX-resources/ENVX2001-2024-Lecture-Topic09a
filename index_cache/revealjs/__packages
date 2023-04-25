@@ -11,3 +11,6 @@ lubridate
 AppliedPredictiveModeling
 report
 broom
+DescTools
+lattice
+caret

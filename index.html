@@ -7,17 +7,17 @@
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.333">
-<meta name="author" content="Januar Harianto">
-<title>Regression: predictive modelling</title>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-<link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
-<link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
-<style>
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.333">
+
+  <meta name="author" content="Januar Harianto">
+  <title>Regression: predictive modelling</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -95,12 +95,28 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-<link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css" id="theme">
-<link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-<link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-<link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-<link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-<style type="text/css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
 
   .callout {
     margin-top: 1em;
@@ -297,7 +313,7 @@
   }
 
   </style>
-<style type="text/css">
+  <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -389,7 +405,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center"><h1 class="title">Regression: predictive modelling</h1>
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Regression: predictive modelling</h1>
   <p class="subtitle">ENVX2001 - Applied Statistical Methods</p>
 
 <div class="quarto-title-authors">
@@ -407,85 +424,57 @@ Januar Harianto
 </div>
 
   <p class="date">Apr 2023</p>
-</section><section id="predictive-modelling" class="title-slide slide level1 center"><h1>Predictive modelling</h1>
+</section>
+<section id="predictive-modelling" class="title-slide slide level1 center">
+<h1>Predictive modelling</h1>
 <blockquote>
 <p>“The best way to predict the future is to create it.”</p>
 </blockquote>
 <p>– Peter Ferdinand Drucker, 1909–2005</p>
-</section><section><section id="our-workflow-so-far" class="title-slide slide level1 center"><h1>Our workflow so far</h1>
+</section>
 
-</section><section id="workflow" class="slide level2" data-auto-animate="true"><h2 data-id="quarto-animate-title">Workflow</h2>
+<section>
+<section id="our-workflow-so-far" class="title-slide slide level1 center">
+<h1>Our workflow so far</h1>
+
+</section>
+<section id="workflow" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Workflow</h2>
 <ol type="1">
 <li>Model development – week 7
 <ul>
-<li>
-<strong>Explore</strong>: visualise, summarise</li>
-<li>
-<strong>Transform predictors</strong>: linearise, reduce skewness/leverage</li>
-<li>
-<strong>Model</strong>: fit, check assumptions, interpret, transform. Repeat.</li>
-</ul>
-</li>
+<li><strong>Explore</strong>: visualise, summarise</li>
+<li><strong>Transform predictors</strong>: linearise, reduce skewness/leverage</li>
+<li><strong>Model</strong>: fit, check assumptions, interpret, transform. Repeat.</li>
+</ul></li>
 </ol>
 <div class="fragment">
 <ol start="2" type="1">
 <li>Variable selection – week 8
 <ul>
-<li>
-<strong>VIF</strong>: remove predictors with high variance inflation factor</li>
-<li>
-<strong>Model selection</strong>: stepwise selection, AIC, principle of parsimony, assumption checks</li>
-</ul>
-</li>
+<li><strong>VIF</strong>: remove predictors with high variance inflation factor</li>
+<li><strong>Model selection</strong>: stepwise selection, AIC, principle of parsimony, assumption checks</li>
+</ul></li>
 </ol>
 </div>
 <div class="fragment">
 <ol start="3" type="1">
-<li>This week – predictive modelling
+<li><strong>This week – predictive modelling</strong>
 <ul>
-<li>
-<strong>Predict</strong>: Use the model to predict new data</li>
-<li>
-<strong>Assess</strong>: Evaluate the model’s performance</li>
-<li>
-<strong>Reflect</strong>: What can we do to improve the model?</li>
-</ul>
-</li>
+<li><strong>Predict</strong>: Use the model to predict new data</li>
+<li><strong>Assess</strong>: Evaluate the model’s performance</li>
+<li><strong>Reflect</strong>: What can we do to improve the model?</li>
+</ul></li>
 </ol>
 </div>
-</section><section id="workflow-1" class="slide level2" data-auto-animate="true"><h2 data-id="quarto-animate-title">Workflow</h2>
-<ol type="1">
-<li>Model development – week 7
-<ul>
-<li>
-<strong>Explore</strong>: visualise, summarise</li>
-<li><span style="color: red;"><strong>Partition data (maybe): training and test sets</strong></span></li>
-<li>
-<strong>Transform predictors</strong>: linearise, reduce skewness/leverage</li>
-<li>
-<strong>Model</strong>: fit, check assumptions, interpret, transform. Repeat.</li>
-</ul>
-</li>
-<li>Variable selection – week 8
-<ul>
-<li>
-<strong>VIF</strong>: remove predictors with high variance inflation factor</li>
-<li>
-<strong>Model selection</strong>: stepwise selection, AIC, principle of parsimony, assumption checks</li>
-</ul>
-</li>
-<li>This week – predictive modelling
-<ul>
-<li>
-<strong>Predict</strong>: Use the model to predict new data</li>
-<li><span style="color: red;"><strong>Assess: Evaluate the model’s performance</strong></span></li>
-<li>
-<strong>Reflect</strong>: What can we do to improve the model?</li>
-</ul>
-</li>
-</ol></section></section><section><section id="making-predictions" class="title-slide slide level1 center"><h1>Making predictions</h1>
+</section></section>
+<section>
+<section id="making-predictions" class="title-slide slide level1 center">
+<h1>Making predictions</h1>
 
-</section><section id="previously-on-envx2001" class="slide level2" data-auto-animate="true"><h2 data-id="quarto-animate-title">Previously on ENVX2001…</h2>
+</section>
+<section id="previously-on-envx2001" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Previously on ENVX2001…</h2>
 <p>We fitted a multiple linear regression model to the data (slide 62).</p>
 <div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-1_9d3720a60b4d9d887024f1f4552abcd4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb1-1" class="hljs-ln-code"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -515,9 +504,11 @@ Multiple R-squared:  0.6644,    Adjusted R-squared:  0.655
 F-statistic: 70.62 on 3 and 107 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p><span class="math display">\[\widehat{log(Ozone)}=-0.262 + 0.0492 \cdot Temp + 0.00252 \cdot Solar.R - 0.0616 \cdot Wind\]</span></p>
-</section><section id="predict-equation" class="slide level2" data-auto-animate="true"><h2 data-id="quarto-animate-title">Predict: equation</h2>
-<p><span class="math display">\[ \widehat{log(Ozone)}=-0.262 + 0.0492 \cdot \color{darkorchid}{Temp} + 0.00252 \cdot \color{darkorange}{Solar.R} - 0.0616 \cdot \color{seagreen}{Wind} \]</span></p>
+<p><span class="math display">\widehat{log(Ozone)}=-0.262 + 0.0492 \cdot Temp + 0.00252 \cdot Solar.R - 0.0616 \cdot Wind</span></p>
+</section>
+<section id="predict-equation" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Predict: equation</h2>
+<p><span class="math display"> \widehat{log(Ozone)}=-0.262 + 0.0492 \cdot \color{darkorchid}{Temp} + 0.00252 \cdot \color{darkorange}{Solar.R} - 0.0616 \cdot \color{seagreen}{Wind} </span></p>
 <div class="fragment">
 <p>On a certain day, we measured (<em>units are Imperial</em>):</p>
 <ul>
@@ -526,62 +517,57 @@ F-statistic: 70.62 on 3 and 107 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><span style="color: seagreen">wind speed <code>Wind</code> to be 10.9 miles per hour</span></li>
 </ul>
 <p><strong>What is the predicted ozone level?</strong> . . .</p>
-<p><span class="math display">\[\widehat{log(Ozone)}=-0.262 + 0.0492 \cdot \color{darkorchid}{80} + 0.00252 \cdot \color{darkorange}{145} - 0.0616 \cdot \color{seagreen}{10.9}\]</span></p>
+<p><span class="math display">\widehat{log(Ozone)}=-0.262 + 0.0492 \cdot \color{darkorchid}{80} + 0.00252 \cdot \color{darkorange}{145} - 0.0616 \cdot \color{seagreen}{10.9}</span></p>
 <p>Easy! The two things we need to think about are…</p>
 <ul>
 <li><strong>What is the uncertainty in this prediction?</strong></li>
 </ul>
 </div>
-</section><section id="uncertainty" class="slide level2"><h2>Uncertainty</h2>
+</section>
+<section id="uncertainty" class="slide level2">
+<h2>Uncertainty</h2>
 <div class="fragment">
 <ul>
-<li>
-<strong>Confidence interval</strong>: uncertainty in the <strong>mean</strong> response at a given predictor value.</li>
-<li>
-<strong>Prediction interval</strong>: uncertainty in a <strong>single</strong> response at a given predictor value.</li>
+<li><strong>Confidence interval</strong>: uncertainty in the <strong>mean</strong> response at a given predictor value.</li>
+<li><strong>Prediction interval</strong>: uncertainty in a <strong>single</strong> response at a given predictor value.</li>
 </ul>
 <p><br></p>
 </div>
 <div class="fragment">
 <h3 id="what-it-means">What it means</h3>
 <blockquote>
-<p><strong>95% confidence interval</strong>: Given the parameters of the model, we are 95% confident that the <em>mean</em> response at a given predictor value is between <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span>.</p>
+<p><strong>95% confidence interval</strong>: Given the parameters of the model, we are 95% confident that the <em>mean</em> response at a given predictor value is between <span class="math inline">y_1</span> and <span class="math inline">y_2</span>.</p>
 </blockquote>
 <blockquote>
-<p><strong>95% prediction interval</strong>: Given the parameters of the model, we are 95% confident that a <em>single</em> response at a given predictor value is between <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span>.</p>
+<p><strong>95% prediction interval</strong>: Given the parameters of the model, we are 95% confident that a <em>single</em> response at a given predictor value is between <span class="math inline">y_1</span> and <span class="math inline">y_2</span>.</p>
 </blockquote>
 <h3 id="why-the-distinction">Why the distinction?</h3>
 <ul>
-<li>
-<strong>Confidence interval</strong>: we are interested in the <em>mean</em> response.</li>
-<li>
-<strong>Prediction interval</strong>: we are interested in a <em>single</em> value prediction.</li>
+<li><strong>Confidence interval</strong>: we are interested in the <em>mean</em> response.</li>
+<li><strong>Prediction interval</strong>: we are interested in a <em>single</em> value prediction.</li>
 </ul>
 </div>
-</section><section id="confidence-interval-ci" class="slide level2"><h2>Confidence interval (CI)</h2>
+</section>
+<section id="confidence-interval-ci" class="slide level2">
+<h2>Confidence interval (CI)</h2>
 <h3 id="ci-standard-error-of-the-fit">CI: standard error of the fit</h3>
-<p><span class="math display">\[ se(\widehat{y}) = \sqrt{MSE \cdot \left( \frac{1}{n} + \frac{(x_0 - \bar{x})^2}{\sum_{i=1}^n (x_i - \bar{x})^2} \right)} \]</span> where <span class="math inline">\(x_0\)</span> is the predictor value at which we want to predict the response</p>
+<p><span class="math display"> se(\widehat{y}) = \sqrt{MSE \cdot \left( \frac{1}{n} + \frac{(x_0 - \bar{x})^2}{\sum_{i=1}^n (x_i - \bar{x})^2} \right)} </span> where <span class="math inline">x_0</span> is the predictor value at which we want to predict the response</p>
 <ul>
-<li>
-<span class="math inline">\(MSE\)</span> is the mean squared error of the fit (residual ms)</li>
-<li>
-<span class="math inline">\(\sum_{i=1}^n (x_i - \bar{x})^2\)</span> is the sum of squares of the predictor values</li>
-<li>
-<span class="math inline">\(n\)</span> is the number of observations</li>
-<li>
-<span class="math inline">\(\bar{x}\)</span> is the mean of the predictor values</li>
-</ul></section><section id="prediction-interval-pi" class="slide level2"><h2>Prediction interval (PI)</h2>
+<li><span class="math inline">MSE</span> is the mean squared error of the fit (residual ms)</li>
+<li><span class="math inline">\sum_{i=1}^n (x_i - \bar{x})^2</span> is the sum of squares of the predictor values</li>
+<li><span class="math inline">n</span> is the number of observations</li>
+<li><span class="math inline">\bar{x}</span> is the mean of the predictor values</li>
+</ul>
+</section>
+<section id="prediction-interval-pi" class="slide level2">
+<h2>Prediction interval (PI)</h2>
 <h3 id="pi-standard-error-of-the-prediction">PI: standard error of the prediction</h3>
-<p><span class="math display">\[ se(\widehat{y}) = \sqrt{MSE \cdot \left( 1 + \frac{1}{n} + \frac{(x_0 - \bar{x})^2}{\sum_{i=1}^n (x_i - \bar{x})^2} \right)} \]</span> where <span class="math inline">\(x_0\)</span> is the predictor value at which we want to predict the response</p>
+<p><span class="math display"> se(\widehat{y}) = \sqrt{MSE \cdot \left( 1 + \frac{1}{n} + \frac{(x_0 - \bar{x})^2}{\sum_{i=1}^n (x_i - \bar{x})^2} \right)} </span> where <span class="math inline">x_0</span> is the predictor value at which we want to predict the response</p>
 <ul>
-<li>
-<span class="math inline">\(MSE\)</span> is the mean squared error of the fit (residual ms)</li>
-<li>
-<span class="math inline">\(\sum_{i=1}^n (x_i - \bar{x})^2\)</span> is the sum of squares of the predictor values</li>
-<li>
-<span class="math inline">\(n\)</span> is the number of observations</li>
-<li>
-<span class="math inline">\(\bar{x}\)</span> is the mean of the predictor values</li>
+<li><span class="math inline">MSE</span> is the mean squared error of the fit (residual ms)</li>
+<li><span class="math inline">\sum_{i=1}^n (x_i - \bar{x})^2</span> is the sum of squares of the predictor values</li>
+<li><span class="math inline">n</span> is the number of observations</li>
+<li><span class="math inline">\bar{x}</span> is the mean of the predictor values</li>
 </ul>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -592,20 +578,22 @@ F-statistic: 70.62 on 3 and 107 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>The only difference between the CI and PI is the additional term <span class="math inline">\(1\)</span> in the PI formula that is added. The reason for this is that we are interested in a <em>single</em> response, not the <em>mean</em> response.</p>
+<p>The only difference between the CI and PI is the additional term <span class="math inline">1</span> in the PI formula that is added. The reason for this is that we are interested in a <em>single</em> response, not the <em>mean</em> response.</p>
 </div>
 </div>
 </div>
-</section><section id="predictions-in-r" class="slide level2"><h2>Predictions in R</h2>
+</section>
+<section id="predictions-in-r" class="slide level2">
+<h2>Predictions in R</h2>
 <ul>
-<li>We can use the <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> function</li>
+<li>We can use the <code>predict()</code> function</li>
 <li>First, we need to create a new data frame with the predictor values we want to predict at</li>
 </ul>
 <div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-2_3c1c9b724c0cbc62259b7a49a1edc776">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>to_predict <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Temp =</span> <span class="dv">80</span>, <span class="at">Solar.R =</span> <span class="dv">145</span>, <span class="at">Wind =</span> <span class="fl">10.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Then, we can use the <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> function to predict the response at these values</li>
+<li>Then, we can use the <code>predict()</code> function to predict the response at these values</li>
 <li>Use <code>interval = "confidence"</code> or <code>interval = "prediction"</code> to get the confidence or prediction interval.</li>
 </ul>
 <div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-3_3114f94e6ea4432271861ec503535ead">
@@ -620,7 +608,9 @@ F-statistic: 70.62 on 3 and 107 DF,  p-value: &lt; 2.2e-16</code></pre>
 1 3.365227 2.350051 4.380404</code></pre>
 </div>
 </div>
-</section><section id="comparing-ci-vs-pi" class="slide level2"><h2>Comparing CI vs PI</h2>
+</section>
+<section id="comparing-ci-vs-pi" class="slide level2">
+<h2>Comparing CI vs PI</h2>
 <ul>
 <li>The confidence interval is narrower than the prediction interval.</li>
 <li>It’s easier to visualise two-dimensional data, so let’s look at a simple linear regression model of <code>log(Ozone)</code> vs.&nbsp;<code>Temp</code>.</li>
@@ -647,12 +637,16 @@ F-statistic: 70.62 on 3 and 107 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb10-4"><a href="#cb10-4"></a>                      <span class="at">Lpi =</span> preds_pi[, <span class="st">"lwr"</span>],</span>
 <span id="cb10-5"><a href="#cb10-5"></a>                      <span class="at">Upi =</span> preds_pi[, <span class="st">"upr"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="visualising-ci-vs-pi" class="slide level2"><h2>Visualising CI vs PI</h2>
+</section>
+<section id="visualising-ci-vs-pi" class="slide level2">
+<h2>Visualising CI vs PI</h2>
 <ul>
 <li>We can now plot the CI and PI as shaded areas around the predicted line</li>
 </ul>
 <div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-7_0cee306c1e9e41aece20f30a745b13e9">
-<details><summary>Code</summary><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>p <span class="ot">&lt;-</span></span>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>p <span class="ot">&lt;-</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">ggplot</span>(airquality, <span class="fu">aes</span>(Temp, <span class="fu">log</span>(Ozone))) <span class="sc">+</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> pred_df, <span class="fu">aes</span>(Temp, Lci), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
@@ -663,27 +657,568 @@ F-statistic: 70.62 on 3 and 107 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb11-9"><a href="#cb11-9"></a>  <span class="fu">theme_bw</span>()</span>
 <span id="cb11-10"><a href="#cb11-10"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section><section id="ci-and-geom_smooth" class="slide level2"><h2>CI and <code>geom_smooth()</code>
-</h2>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="ci-and-geom_smooth" class="slide level2">
+<h2>CI and <code>geom_smooth()</code></h2>
 <ul>
 <li>Notice that <code>geom_smooth()</code> uses the CI, not the PI.</li>
 </ul>
 <div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-8_8ac667fc5bb48bd873c432e3fc45a7f7">
-<details><summary>Code</summary><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section></section><section id="thanks" class="title-slide slide level1 center"><h1>Thanks!</h1>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="limitations" class="slide level2">
+<h2>Limitations</h2>
+<p>All is good when we want to assess uncertainty in a model that we have already fit. But what if we want to know how well the model predicts <strong>new</strong> data, i.e.&nbsp;data that we did not use to fit the model?</p>
+<h3 id="what-we-need">What we need</h3>
+<ul>
+<li>A way to estimate how well the model predicts new data <em>that hasn’t been used to fit the model</em>, i.e.&nbsp;an <strong>independent</strong> dataset.</li>
+<li>Because we have the <strong>actual values</strong> in the new dataset, we can compare them to the <strong>predicted values</strong> from the model.
+<ul>
+<li>If the model is good, we expect the predictions to be close to the actual values.</li>
+<li>If the model is bad, we expect the predictions to be <em>far</em> from the actual values.</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="model-validation" class="title-slide slide level1 center">
+<h1>Model validation</h1>
+
+</section>
+<section id="general-idea" class="slide level2">
+<h2>General idea</h2>
+<ul>
+<li>We have a dataset that we use to fit a model, and want to assess how well the model predicts new data by performing <strong>model validation</strong>.</li>
+<li>We can:
+<ul>
+<li><del>use the <em>same</em> dataset to assess how well the model fits the data (e.g.&nbsp;<span class="math inline">r^2</span>);</del> or</li>
+<li><strong>use a <em>different</em> dataset to assess how well the model predicts new data (e.g.&nbsp;RMSE).</strong></li>
+</ul></li>
+<li>The dataset can be obtained by:
+<ul>
+<li>Collecting new data.</li>
+<li>Splitting the existing data into two parts before model building.</li>
+<li>Cross-validation or k-fold cross-validation of existing data.</li>
+</ul></li>
+</ul>
+</section>
+<section id="collecting-new-data" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Collecting new data</h2>
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 500px; height: 50px; margin: 10px;">
+
+</div>
+</div>
+<p><span class="absolute" style="color: #2780e3;top: 130px; left: 275px; " data-id="text1">Dataset</span></p>
+</section>
+<section id="collecting-new-data-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Collecting new data</h2>
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 500px; height: 50px; margin: 10px;">
+
+</div>
+<p><span class="math inline">+</span></p>
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 200px; height: 50px; margin: 10px;">
+
+</div>
+</div>
+<p><span class="absolute" style="color: #2780e3;top: 130px; left: 155px; " data-id="text1">Dataset</span></p>
+<p><span class="absolute" style="color: #3fb618;top: 130px; left: 700px; ">New dataset</span></p>
+</section>
+<section id="collecting-new-data-2" class="slide level2">
+<h2>Collecting new data</h2>
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 500px; height: 50px; margin: 10px;">
+
+</div>
+<p><span class="math inline">+</span></p>
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 200px; height: 50px; margin: 10px;">
+
+</div>
+</div>
+<p><span class="absolute" style="color: #2780e3;top: 130px; left: 155px; " data-id="text1">Dataset</span></p>
+<p><span class="absolute" style="color: #3fb618;top: 130px; left: 700px; ">New dataset</span></p>
+<p><br> <br></p>
+<ul>
+<li>The best way to assess how well a model predicts new data is to collect new data.
+<ul>
+<li><span style="color: #2780e3"><strong>Training set</strong></span>: used to fit the model.</li>
+<li><span style="color: #3fb618"><strong>Test set</strong></span>: used to assess how well the model predicts new data.</li>
+</ul></li>
+</ul>
+<h3 id="pros">Pros</h3>
+<ul>
+<li>The new data is completely independent of the data used to fit the model.</li>
+<li>Compared to splitting existing data, we have <em>more</em> data to fit the model and <em>more</em> data to validate the model.</li>
+</ul>
+<h3 id="cons">Cons</h3>
+<ul>
+<li>It can be expensive and time-consuming to collect new data.</li>
+<li>Some data may be impossible to collect (e.g.&nbsp;historical data).</li>
+</ul>
+</section>
+<section id="data-splitting" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-id="quarto-animate-title">Data splitting</h2>
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 500px; height: 50px; margin: 0px;">
+
+</div>
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 0px; height: 50px; margin: 0px;">
+
+</div>
+</div>
+<p><span class="absolute" style="color: #2780e3;top: 130px; left: 275px; " data-id="text1">Dataset</span></p>
+</section>
+<section id="data-splitting-1" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-id="quarto-animate-title">Data splitting</h2>
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 400px; height: 50px; margin: 0px;">
+
+</div>
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 50px; margin: 0px;">
+
+</div>
+</div>
+<p><span class="absolute" style="color: #2780e3;top: 130px; left: 275px; " data-id="text1">Dataset</span></p>
+<p><span class="absolute" style="color: #2780e3;top: 130px; left: 368px; " data-id="text2">(Training)</span></p>
+<p><span class="absolute" style="color: #3fb618;top: 130px; left: 680px; ">Subset (Test)</span></p>
+</section>
+<section id="data-splitting-2" class="slide level2">
+<h2>Data splitting</h2>
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 400px; height: 50px; margin: 0px;">
+
+</div>
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 50px; margin: 0px;">
+
+</div>
+</div>
+<p><span class="absolute" style="color: #2780e3;top: 130px; left: 275px; " data-id="text1">Dataset</span></p>
+<p><span class="absolute" style="color: #2780e3;top: 130px; left: 368px; " data-id="text2">(Training)</span></p>
+<p><span class="absolute" style="color: #3fb618;top: 130px; left: 680px; ">Subset (Test)</span></p>
+<p><br> <br></p>
+<ul>
+<li>Split the existing data into two parts:
+<ul>
+<li><span style="color: #2780e3"><strong>Training set</strong></span>: used to fit the model.</li>
+<li><span style="color: #3fb618"><strong>Test set</strong></span>: used to assess how well the model predicts new data.</li>
+</ul></li>
+</ul>
+<h3 id="pros-1">Pros</h3>
+<ul>
+<li>The test set is completely independent of the training set.</li>
+<li>Compared to collecting new data, it is cheaper and faster to split existing data.</li>
+</ul>
+<h3 id="cons-1">Cons</h3>
+<ul>
+<li>We have <em>less</em> data to fit the model and <em>less</em> data to validate the model.</li>
+<li>How do we split the data?</li>
+</ul>
+</section>
+<section id="cross-validation" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-id="quarto-animate-title">Cross-validation</h2>
+<!-- Single dataset -->
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 500px; height: 50px; margin: 0px;">
+
+</div>
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 0px; height: 50px; margin: 0px;">
+
+</div>
+<div data-id="box3" data-auto-animate-delay="0" style="background: #2780e3; width: 0px; height: 50px; margin: 0px;">
+
+</div>
+</div>
+</section>
+<section id="cross-validation-1" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-id="quarto-animate-title">Cross-validation</h2>
+<!-- Cross-validated dataset (random split) -->
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 300px; height: 50px; margin: 0px;">
+
+</div>
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 50px; margin: 0px;">
+
+</div>
+<div data-id="box3" data-auto-animate-delay="0" style="background: #2780e3; width: 100px; height: 50px; margin: 0px;">
+
+</div>
+</div>
+</section>
+<section id="cross-validation-2" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-id="quarto-animate-title">Cross-validation</h2>
+<!-- Make bars smaller -->
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 300px; height: 20px; margin: 0px;">
+
+</div>
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;">
+
+</div>
+<div data-id="box3" data-auto-animate-delay="0" style="background: #2780e3; width: 100px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+</section>
+<section id="cross-validation-3" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-id="quarto-animate-title">Cross-validation</h2>
+<!-- Add iterations -->
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 300px; height: 20px; margin: 0px;">
+
+</div>
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;">
+
+</div>
+<div data-id="box3" data-auto-animate-delay="0" style="background: #2780e3; width: 100px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+<div class="r-hstack">
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 100px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 300px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+<div class="r-hstack">
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 250px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 150px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+<p><span class="absolute" style="color: #000; font-size: 18px;top: 55px; right: 790px; " data-id="text1">Iteration 1</span></p>
+<p><span class="absolute" style="color: #000; font-size: 18px;top: 75px; right: 790px; " data-id="text2">Iteration 2</span></p>
+<p><span class="absolute" style="color: #000; font-size: 18px;top: 95px; right: 790px; " data-id="text3">Iteration 3</span></p>
+<p><span class="absolute" style="color: #000; font-size: 18px;top: 115px; right: 790px; " data-id="text4">And so on…</span></p>
+</section>
+<section id="cross-validation-4" class="slide level2">
+<h2>Cross-validation</h2>
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 300px; height: 20px; margin: 0px;">
+
+</div>
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;">
+
+</div>
+<div data-id="box3" data-auto-animate-delay="0" style="background: #2780e3; width: 100px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+<div class="r-hstack">
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 100px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 300px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+<div class="r-hstack">
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 250px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 150px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+<p><span class="absolute" style="color: #000; font-size: 18px;top: 55px; right: 790px; " data-id="text1">Iteration 1</span></p>
+<p><span class="absolute" style="color: #000; font-size: 18px;top: 75px; right: 790px; " data-id="text2">Iteration 2</span></p>
+<p><span class="absolute" style="color: #000; font-size: 18px;top: 95px; right: 790px; " data-id="text3">Iteration 3</span></p>
+<p><span class="absolute" style="color: #000; font-size: 18px;top: 115px; right: 790px; " data-id="text4">And so on…</span></p>
+<p><br></p>
+<ul>
+<li>Like data splitting, where existing data is split into two parts:
+<ul>
+<li><span style="color: #2780e3"><strong>Training set</strong></span>: used to fit the model.</li>
+<li><span style="color: #3fb618"><strong>Test set</strong></span>: used to assess how well the model predicts new data.</li>
+</ul></li>
+<li>The <strong>difference</strong> is that the splitting is done <em>multiple</em> times, and the model is fit and validated <em>multiple</em> times.</li>
+</ul>
+<h3 id="pros-2">Pros</h3>
+<ul>
+<li>Same as data splitting, but also:
+<ul>
+<li>The model is fit and validated <em>multiple</em> times, so we can get a better estimate of how well the model predicts new data.</li>
+</ul></li>
+</ul>
+<h3 id="cons-2">Cons</h3>
+<ul>
+<li>We have <em>less</em> data to fit the model and <em>less</em> data to validate the model.</li>
+<li>It can be computationally expensive to perform cross-validation.</li>
+</ul>
+</section>
+<section id="k-fold-cross-validation" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-id="quarto-animate-title"><em>k</em>-fold cross-validation</h2>
+<!-- Single dataset -->
+<div class="r-hstack">
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 0px; height: 50px; margin: 0px;">
+
+</div>
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 498px; height: 50px; margin: 0px;">
+
+</div>
+<div data-id="box3" data-auto-animate-delay="0" style="background: #2780e3; width: 0px; height: 50px; margin: 0px;">
+
+</div>
+</div>
+</section>
+<section id="k-fold-cross-validation-1" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-id="quarto-animate-title"><em>k</em>-fold cross-validation</h2>
+<!-- Fold 1 -->
+<div class="r-hstack">
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 50px; margin: 0px;">
+
+</div>
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 50px; margin: 0px;">
+
+</div>
+<div data-id="box3" data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 50px; margin: 0px;">
+
+</div>
+</div>
+</section>
+<section id="k-fold-cross-validation-2" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-id="quarto-animate-title"><em>k</em>-fold cross-validation</h2>
+<!-- Make bars smaller -->
+<div class="r-hstack">
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-id="box3" data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+</section>
+<section id="k-fold-cross-validation-3" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-id="quarto-animate-title"><em>k</em>-fold cross-validation</h2>
+<!-- Add iterations -->
+<div class="r-hstack">
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-id="box3" data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+<div class="r-hstack">
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+<div class="r-hstack">
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+<p><span class="absolute" style="color: #000; font-size: 18px;top: 55px; right: 790px; " data-id="text1">Iteration 1</span> <span class="absolute" style="color: #000; font-size: 18px;top: 75px; right: 790px; " data-id="text2">Iteration 2</span> <span class="absolute" style="color: #000; font-size: 18px;top: 95px; right: 790px; " data-id="text3">Iteration 3</span> <span class="absolute" style="color: #000; font-size: 18px;top: 120px; right: 790px; " data-id="text4">3-fold cross-validation</span> <span class="absolute" style="color: #000; font-size: 18px;top: 120px; right: 660px; ">Fold 1</span> <span class="absolute" style="color: #000; font-size: 18px;top: 120px; right: 494px; ">Fold 2</span> <span class="absolute" style="color: #000; font-size: 18px;top: 120px; right: 328px; ">Fold 3</span></p>
+</section>
+<section id="k-fold-cross-validation-4" class="slide level2">
+<h2><em>k</em>-fold cross-validation</h2>
+<div class="r-hstack">
+<div data-id="box2" data-auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-id="box1" data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-id="box3" data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+<div class="r-hstack">
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+<div class="r-hstack">
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+<div data-auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;">
+
+</div>
+</div>
+<p><span class="absolute" style="color: #000; font-size: 18px;top: 55px; right: 790px; " data-id="text1">Iteration 1</span> <span class="absolute" style="color: #000; font-size: 18px;top: 75px; right: 790px; " data-id="text2">Iteration 2</span> <span class="absolute" style="color: #000; font-size: 18px;top: 95px; right: 790px; " data-id="text3">Iteration 3</span> <span class="absolute" style="color: #000; font-size: 18px;top: 120px; right: 790px; " data-id="text4">3-fold cross-validation</span> <span class="absolute" style="color: #000; font-size: 18px;top: 120px; right: 660px; ">Fold 1</span> <span class="absolute" style="color: #000; font-size: 18px;top: 120px; right: 494px; ">Fold 2</span> <span class="absolute" style="color: #000; font-size: 18px;top: 120px; right: 328px; ">Fold 3</span></p>
+<p><br></p>
+<ul>
+<li>split data into <em>k</em> groups (folds)</li>
+<li><span style="color: #2780e3"><strong>Train</strong></span> on <em>k-1</em> folds, <span style="color: #3fb618"><strong>Test</strong></span> on the remaining fold</li>
+<li>All folds are used for testing once</li>
+</ul>
+<h3 id="pros-3">Pros</h3>
+<ul>
+<li>Same as cross-validation, but also:
+<ul>
+<li>Better use of <em>all</em> available data</li>
+<li>Greatly reduces overfitting as the model’s performance is not just a result of the particular way the data was split.</li>
+</ul></li>
+</ul>
+<h3 id="cons-3">Cons</h3>
+<ul>
+<li>Computationally expensive, since all data is used for training and testing</li>
+<li>Bias in small datasets: each fold may contain too little data to provide a representative sample</li>
+</ul>
+</section></section>
+<section>
+<section id="assessing-prediction-quality" class="title-slide slide level1 center">
+<h1>Assessing prediction quality</h1>
+
+</section>
+<section id="root-mean-square-error-rmse" class="slide level2">
+<h2>Root-mean-square error (RMSE)</h2>
+<p>The <strong>most common metric</strong> for comparing the performance of regression models. <span class="math display"> RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2} </span></p>
+<blockquote>
+<p>Approximately, the standard deviation of the residuals.</p>
+</blockquote>
+<ul>
+<li>A measure of <strong>accuracy</strong> for the model.</li>
+<li>Unlike <span class="math inline">r^2</span>, RMSE is <strong>not</strong> a relative measure, but is scaled to the units of <span class="math inline">y</span>.</li>
+<li>The smaller the RMSE, the better the model.</li>
+</ul>
+</section>
+<section id="mean-error-me" class="slide level2">
+<h2>Mean error (ME)</h2>
+<p>The average of the residuals.</p>
+<p><span class="math display"> ME = \frac{1}{n}\sum_{i=1}^{n}y_i - \hat{y}_i </span></p>
+<blockquote>
+<p>Averaged difference between the predicted and observed values.</p>
+</blockquote>
+<ul>
+<li>A measure of <strong>bias</strong> for the model.</li>
+<li>Also scaled to the units of <span class="math inline">y</span>.</li>
+<li>Can be positive or negative to indicate over- or under-estimation.</li>
+</ul>
+</section>
+<section id="lins-concordance-correlation-coefficient-ccc" class="slide level2">
+<h2>Lin’s concordance correlation coefficient (CCC)</h2>
+<p>A modification of Pearson’s correlation coefficient that takes into account the deviation of the observations from the identity line (i.e., the 45° line where the values of the two variables are equal).</p>
+<p><span class="math display"> CCC = \frac{2\text{Cov}(X,Y)}{\text{Var}(X) + \text{Var}(Y) + (\mu_X - \mu_Y)^2} </span></p>
+<blockquote>
+<p>An “agreement” value that takes into account covariance, variances, and difference in means.</p>
+</blockquote>
+<ul>
+<li>A measure of <strong>precision</strong> for the model.</li>
+<li>Ranges from -1 to 1, with 1 indicating perfect agreement.</li>
+<li>Unitless and scale-invariant.</li>
+</ul>
+</section>
+<section id="ccc-vs-pearson-correlation-coefficient" class="slide level2">
+<h2>CCC vs Pearson correlation coefficient</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-9_03bc50978a05b8565fd67f062e0902a7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">y =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">5</span>),</span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="st">"45 degree line | CCC = 1"</span> <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">mutate</span>(<span class="st">"Location shift | CCC = 0.89"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">45 degree line | CCC = 1</span><span class="st">`</span> <span class="sc">-</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">mutate</span>(<span class="st">"Scale shift | CCC = 0.52"</span> <span class="ot">=</span> y <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>  <span class="fu">mutate</span>(<span class="st">"Location and scale shift | CCC = 0.67"</span> <span class="ot">=</span> y <span class="sc">*</span> <span class="dv">2</span> <span class="sc">-</span> <span class="dv">20</span>)</span>
+<span id="cb13-8"><a href="#cb13-8"></a></span>
+<span id="cb13-9"><a href="#cb13-9"></a><span class="co"># pivot</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>df_long <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="at">values_to =</span> <span class="st">"x"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">factor</span>(name, </span>
+<span id="cb13-13"><a href="#cb13-13"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"45 degree line | CCC = 1"</span>,</span>
+<span id="cb13-14"><a href="#cb13-14"></a>      <span class="st">"Location shift | CCC = 0.89"</span>,</span>
+<span id="cb13-15"><a href="#cb13-15"></a>      <span class="st">"Scale shift | CCC = 0.52"</span>,</span>
+<span id="cb13-16"><a href="#cb13-16"></a>      <span class="st">"Location and scale shift | CCC = 0.67"</span>)))</span>
+<span id="cb13-17"><a href="#cb13-17"></a></span>
+<span id="cb13-18"><a href="#cb13-18"></a><span class="fu">ggplot</span>(df_long, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb13-19"><a href="#cb13-19"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">colour =</span> <span class="st">"grey"</span>) <span class="sc">+</span></span>
+<span id="cb13-20"><a href="#cb13-20"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name) <span class="sc">+</span></span>
+<span id="cb13-21"><a href="#cb13-21"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-22"><a href="#cb13-22"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">100</span>) <span class="sc">+</span></span>
+<span id="cb13-23"><a href="#cb13-23"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb13-24"><a href="#cb13-24"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb13-25"><a href="#cb13-25"></a>  <span class="fu">geom_blank</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"><p>All of the above have a Pearson correlation coefficient of 1.</p>
+</section></section>
+<section id="putting-into-practice" class="title-slide slide level1 center">
+<h1>Putting into practice</h1>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-11_f77ca6a064b67878bbf95e12e349434e">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="thanks" class="title-slide slide level1 center">
+<h1>Thanks!</h1>
 <p><strong>Questions? Comments?</strong></p>
 <p>Slides made with <a href="https://quarto.org">Quarto</a></p>
 <div class="footer footer-default">
 
 </div>
 </section>
-</div>
+    </div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="index_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="index_files/libs/revealjs/plugin/notes/notes.js"></script><script src="index_files/libs/revealjs/plugin/search/search.js"></script><script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="index_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -848,33 +1383,17 @@ F-statistic: 70.62 on 3 and 107 DF,  p-value: &lt; 2.2e-16</code></pre>
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
         ]
       });
-    </script><script>
+    </script>
+    
+    <script>
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
@@ -909,7 +1428,9 @@ F-statistic: 70.62 on 3 and 107 DF,  p-value: &lt; 2.2e-16</code></pre>
         }
 
       })();
-    </script><script id="quarto-html-after-body" type="application/javascript">
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -1055,6 +1576,6 @@ F-statistic: 70.62 on 3 and 107 DF,  p-value: &lt; 2.2e-16</code></pre>
       }
     });
     </script>
-
+    
 
 </body></html>
