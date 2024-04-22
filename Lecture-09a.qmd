@@ -60,7 +60,7 @@ ggplot2::theme_set(cowplot::theme_half_open())
 ## Previously on ENVX2001... {auto-animate="true"}
 
 
-We fitted a multiple linear regression model to the data (slide 62).
+We fitted a multiple linear regression model to the data.
 
 ```{r}
 #| message=FALSE, warning=FALSE
@@ -138,9 +138,8 @@ $$ se(\widehat{y}) = \sqrt{MSE \cdot \left( 1 + \frac{1}{n} + \frac{(x_0 - \bar{
 - $\bar{x}$ is the mean of the predictor values
 
 
-:::{.callout-note .fragment .fade-up}
 The only difference between the CI and PI is the additional term $1$ in the PI formula that is added. The reason for this is that we are interested in a *single* response, not the *mean* response.
-:::
+
 
 ## Predictions in R
 
@@ -170,6 +169,9 @@ predict(multi_fit, newdata = to_predict, interval = "prediction")
 ```{r}
 fit <- lm(log(Ozone) ~ Temp, data = airquality)
 ```
+
+
+## Comparing CI vs PI
 
 - We create a range of predictions across all possible `Temp` values in 0.1 &deg;F increments, and calculate both the CI and PI for each of those values
 
@@ -244,50 +246,52 @@ All is good when we want to assess uncertainty in a model that we have already f
 ## Collecting new data {auto-animate=true}
 
 ::: {.r-hstack}
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 500px; height: 50px; margin: 10px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 500px; height: 50px; margin: 10px;"}
 :::
 :::
 
-[Dataset]{style="color: #2780e3;" .absolute top=130 left=275 data-id="text1"}
+[Dataset]{style="color: #2D708EFF;" .absolute top=130 left=275 data-id="text1"}
 
 ## Collecting new data {auto-animate=true}
 ::: {.r-hstack}
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 500px; height: 50px; margin: 10px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 500px; height: 50px; margin: 10px;"}
 :::
 
 $+$
 
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 200px; height: 50px; margin: 10px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 200px; height: 50px; margin: 10px;"}
 :::
 :::
 
-[Dataset]{style="color: #2780e3;" .absolute top=130 left=155 data-id="text1"}
+[Dataset]{style="color: #2D708EFF;" .absolute top=130 left=155 data-id="text1"}
 
-[New dataset]{style="color: #3fb618;" .absolute top=130 left=700}
+[New dataset]{style="color: #95D840FF;" .absolute top=130 left=700}
 
 
 
 ## Collecting new data
 
 ::: {.r-hstack}
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 500px; height: 50px; margin: 10px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 500px; height: 50px; margin: 10px;"}
 :::
 
 $+$
 
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 200px; height: 50px; margin: 10px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 200px; height: 50px; margin: 10px;"}
 :::
 :::
 
-[Dataset]{style="color: #2780e3;" .absolute top=130 left=155 data-id="text1"}
+[Dataset]{style="color: #2D708EFF;" .absolute top=130 left=155 data-id="text1"}
 
-[New dataset]{style="color: #3fb618;" .absolute top=130 left=700}
+[New dataset]{style="color: #95D840FF;" .absolute top=130 left=700}
 
 
 - The best way to assess how well a model predicts new data is to collect new data.
-  - [**Training set**]{style="color: #2780e3"}: used to fit the model.
-  - [**Test set**]{style="color: #3fb618"}: used to assess how well the model predicts new data.
+  - [**Training set**]{style="color: #2D708EFF"}: used to fit the model.
+  - [**Test set**]{style="color: #95D840FF"}: used to assess how well the model predicts new data.
 
+
+## Collecting new data
 
 ### Pros
 
@@ -303,52 +307,53 @@ $+$
 ## Data splitting {auto-animate=true auto-animate-easing="ease-in-out"}
 
 ::: {.r-hstack}
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 500px; height: 50px; margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 500px; height: 50px; margin: 0px;"}
 :::
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 0px; height: 50px; margin: 0px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 0px; height: 50px; margin: 0px;"}
 :::
 :::
 
-[Dataset]{style="color: #2780e3;" .absolute top=130 left=275 data-id="text1"}
+[Dataset]{style="color: #2D708EFF;" .absolute top=130 left=275 data-id="text1"}
 
 ## Data splitting {auto-animate=true auto-animate-easing="ease-in-out"}
 
 ::: {.r-hstack}
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 400px; height: 50px; margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 400px; height: 50px; margin: 0px;"}
 :::
 
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 50px; margin: 0px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 50px; margin: 0px;"}
 :::
 :::
 
-[Dataset]{style="color: #2780e3;" .absolute top=130 left=275 data-id="text1"}
+[Dataset]{style="color: #2D708EFF;" .absolute top=130 left=275 data-id="text1"}
 
-[(Training)]{style="color: #2780e3;" .absolute top=130 left=368 data-id="text2"}
+[(Training)]{style="color: #2D708EFF;" .absolute top=130 left=368 data-id="text2"}
 
-[Subset (Test)]{style="color: #3fb618;" .absolute top=130 left=680}
+[Subset (Test)]{style="color: #95D840FF;" .absolute top=130 left=680}
 
 ## Data splitting
 
 ::: {.r-hstack}
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 400px; height: 50px; margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 400px; height: 50px; margin: 0px;"}
 :::
 
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 50px; margin: 0px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 50px; margin: 0px;"}
 :::
 :::
 
-[Dataset]{style="color: #2780e3;" .absolute top=130 left=275 data-id="text1"}
+[Dataset]{style="color: #2D708EFF;" .absolute top=130 left=275 data-id="text1"}
 
-[(Training)]{style="color: #2780e3;" .absolute top=130 left=368 data-id="text2"}
+[(Training)]{style="color: #2D708EFF;" .absolute top=130 left=368 data-id="text2"}
 
-[Subset (Test)]{style="color: #3fb618;" .absolute top=130 left=680}
-
-
+[Subset (Test)]{style="color: #95D840FF;" .absolute top=130 left=680}
 
 
 - Split the existing data into two parts:
-  - [**Training set**]{style="color: #2780e3"}: used to fit the model.
-  - [**Test set**]{style="color: #3fb618"}: used to assess how well the model predicts new data.
+  - [**Training set**]{style="color: #2D708EFF"}: used to fit the model.
+  - [**Test set**]{style="color: #95D840FF"}: used to assess how well the model predicts new data.
+
+
+## Data splitting
 
 ### Pros
 
@@ -365,11 +370,11 @@ $+$
 <!-- Single dataset -->
 
 ::: {.r-hstack}
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 500px; height: 50px; margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 500px; height: 50px; margin: 0px;"}
 :::
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 0px; height: 50px; margin: 0px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 0px; height: 50px; margin: 0px;"}
 :::
-::: {data-id="box3" auto-animate-delay="0" style="background: #2780e3; width: 0px; height: 50px; margin: 0px;"}
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 0px; height: 50px; margin: 0px;"}
 :::
 :::
 
@@ -377,11 +382,11 @@ $+$
 <!-- Cross-validated dataset (random split) -->
 
 ::: {.r-hstack}
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 300px; height: 50px; margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 300px; height: 50px; margin: 0px;"}
 :::
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 50px; margin: 0px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 50px; margin: 0px;"}
 :::
-::: {data-id="box3" auto-animate-delay="0" style="background: #2780e3; width: 100px; height: 50px; margin: 0px;"}
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 100px; height: 50px; margin: 0px;"}
 :::
 :::
 
@@ -389,11 +394,11 @@ $+$
 <!-- Make bars smaller -->
 
 ::: {.r-hstack}
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 300px; height: 20px; margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 300px; height: 20px; margin: 0px;"}
 :::
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
 :::
-::: {data-id="box3" auto-animate-delay="0" style="background: #2780e3; width: 100px; height: 20px; margin: 0px;"}
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 100px; height: 20px; margin: 0px;"}
 :::
 :::
 
@@ -401,30 +406,30 @@ $+$
 <!-- Add iterations -->
 
 ::: {.r-hstack}
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 300px; height: 20px; margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 300px; height: 20px; margin: 0px;"}
 :::
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
 :::
-::: {data-id="box3" auto-animate-delay="0" style="background: #2780e3; width: 100px; height: 20px; margin: 0px;"}
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 100px; height: 20px; margin: 0px;"}
 :::
 :::
 
 ::: {.r-hstack}
-::: {auto-animate-delay="0" style="background: #2780e3; width: 100px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 100px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #2780e3; width: 300px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 300px; height: 20px; margin: 0px;"}
 :::
 :::
 
 
 ::: {.r-hstack}
-::: {auto-animate-delay="0" style="background: #2780e3; width: 250px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 250px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #2780e3; width: 150px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 150px; height: 20px; margin: 0px;"}
 :::
 :::
 
@@ -440,30 +445,30 @@ $+$
 ## Cross-validation
 
 ::: {.r-hstack}
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 300px; height: 20px; margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 300px; height: 20px; margin: 0px;"}
 :::
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
 :::
-::: {data-id="box3" auto-animate-delay="0" style="background: #2780e3; width: 100px; height: 20px; margin: 0px;"}
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 100px; height: 20px; margin: 0px;"}
 :::
 :::
 
 ::: {.r-hstack}
-::: {auto-animate-delay="0" style="background: #2780e3; width: 100px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 100px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #2780e3; width: 300px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 300px; height: 20px; margin: 0px;"}
 :::
 :::
 
 
 ::: {.r-hstack}
-::: {auto-animate-delay="0" style="background: #2780e3; width: 250px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 250px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #2780e3; width: 150px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 150px; height: 20px; margin: 0px;"}
 :::
 :::
 
@@ -478,9 +483,12 @@ $+$
 
 
 - Like data splitting, where existing data is split into two parts:
-  - [**Training set**]{style="color: #2780e3"}: used to fit the model.
-  - [**Test set**]{style="color: #3fb618"}: used to assess how well the model predicts new data.
+  - [**Training set**]{style="color: #2D708EFF"}: used to fit the model.
+  - [**Test set**]{style="color: #95D840FF"}: used to assess how well the model predicts new data.
 - The **difference** is that the splitting is done *multiple* times, and the model is fit and validated *multiple* times.
+
+
+## Cross-validation
 
 ### Pros
 
@@ -497,11 +505,11 @@ $+$
 <!-- Single dataset -->
 
 ::: {.r-hstack}
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 0px; height: 50px; margin: 0px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 0px; height: 50px; margin: 0px;"}
 :::
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 498px; height: 50px; margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 498px; height: 50px; margin: 0px;"}
 :::
-::: {data-id="box3" auto-animate-delay="0" style="background: #2780e3; width: 0px; height: 50px; margin: 0px;"}
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 0px; height: 50px; margin: 0px;"}
 :::
 :::
 
@@ -509,11 +517,11 @@ $+$
 <!-- Fold 1 -->
 
 ::: {.r-hstack}
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 50px; margin: 0px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 166px; height: 50px; margin: 0px;"}
 :::
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 50px; margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 50px; margin: 0px;"}
 :::
-::: {data-id="box3" auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 50px; margin: 0px;"}
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 50px; margin: 0px;"}
 :::
 :::
 
@@ -521,11 +529,11 @@ $+$
 <!-- Make bars smaller -->
 
 ::: {.r-hstack}
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {data-id="box3" auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
 :::
 
@@ -533,30 +541,30 @@ $+$
 <!-- Add iterations -->
 
 ::: {.r-hstack}
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {data-id="box3" auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
 :::
 
 ::: {.r-hstack}
-::: {auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #95D840FF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
 :::
 
 
 ::: {.r-hstack}
-::: {auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #95D840FF; width: 166px; height: 20px; margin: 0px;"}
 :::
 :::
 
@@ -573,30 +581,30 @@ $+$
 ## *k*-fold cross-validation
 
 ::: {.r-hstack}
-::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;"}
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {data-id="box3" auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
 :::
 
 ::: {.r-hstack}
-::: {auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #95D840FF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
 :::
 
 
 ::: {.r-hstack}
-::: {auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #2780e3; width: 166px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 166px; height: 20px; margin: 0px;"}
 :::
-::: {auto-animate-delay="0" style="background: #3fb618; width: 166px; height: 20px; margin: 0px;"}
+::: {auto-animate-delay="0" style="background: #95D840FF; width: 166px; height: 20px; margin: 0px;"}
 :::
 :::
 
@@ -611,8 +619,11 @@ $+$
 
 
 - split data into *k* groups (folds)
-- [**Train**]{style="color: #2780e3"} on *k-1* folds, [**Test**]{style="color: #3fb618"} on the remaining fold
+- [**Train**]{style="color: #2D708EFF"} on *k-1* folds, [**Test**]{style="color: #95D840FF"} on the remaining fold
 - All folds are used for testing once
+
+
+## *k*-fold cross-validation
 
 ### Pros
 
